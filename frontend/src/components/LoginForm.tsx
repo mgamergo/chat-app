@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Flex } from "@radix-ui/themes";
-import { EyeNoneIcon, EyeOpenIcon } from "@radix-ui/react-icons";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignupForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -50,7 +50,7 @@ const SignupForm = () => {
                 onClick={togglePasswordVisibility}
                 className="absolute inset-y-0 right-3 flex items-center text-gray-400"
               >
-                {passwordVisible ? <EyeNoneIcon /> : <EyeOpenIcon />}
+                {passwordVisible ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </label>
