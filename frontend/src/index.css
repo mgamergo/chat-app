@@ -1,3 +1,22 @@
+/* Import Tailwind's base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Your custom styles */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #555;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #121212;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #242424;
+}
