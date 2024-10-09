@@ -1,6 +1,5 @@
-import { Button, Flex, TextField } from "@radix-ui/themes";
+import { Flex, TextField } from "@radix-ui/themes";
 import { CiSearch } from "react-icons/ci";
-import React from "react";
 
 const SearchComponent = () => {
   return (

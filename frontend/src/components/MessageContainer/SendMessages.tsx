@@ -1,5 +1,4 @@
 import { TextField } from '@radix-ui/themes'
-import React from 'react'
 import { MdEmojiEmotions } from "react-icons/md";
 import { PiPaperPlaneRightFill } from "react-icons/pi";
 

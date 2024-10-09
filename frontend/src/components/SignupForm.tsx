@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import { Button, Card, Flex } from "@radix-ui/themes";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import useSignup from "../hooks/useSignup";
 
 const SignupForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [inputs, setInputs] = useState({
+    fullName: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    gender: "", // Gender field state initialized as empty
+  });
+  const {loading, signup} = useSignup()
 
-  // Function to toggle password visibility
+  // Toggle password visibility
   const togglePasswordVisibility = () => {
     setPasswordVisible((prevState) => !prevState);
   };
@@ -14,6 +24,15 @@ const SignupForm = () => {
   const toggleConfirmPasswordVisibility = () => {
     setConfirmPasswordVisible((prevState) => !prevState);
   };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    // console.log(inputs);
+    const res = await signup(inputs)
+    console.log(res)
+  };
+
   return (
     <Card size="5" className="max-w-[35rem]">
       <h2 className="text-gray-300 font-extrabold text-3xl">
@@ -26,7 +45,7 @@ const SignupForm = () => {
         align="start"
         className="w-full mt-10"
       >
-        <form className="w-full">
+        <form className="w-full" onSubmit={handleSubmit}>
           {/* Full Name Field */}
           <label
             className="label inline-flex flex-col items-start gap-2 w-full mb-5"
@@ -36,6 +55,10 @@ const SignupForm = () => {
             <input
               id="fullName"
               className="outline-none rounded-md h-12 w-full p-3 text-md border border-teal-900 focus:border-teal-400 transition-colors duration-200"
+              value={inputs.fullName}
+              onChange={(e) =>
+                setInputs({ ...inputs, fullName: e.target.value })
+              }
             />
           </label>
 
@@ -48,6 +71,10 @@ const SignupForm = () => {
             <input
               id="username"
               className="outline-none rounded-md h-12 w-full p-3 text-md border border-teal-900 focus:border-teal-400 transition-colors duration-200"
+              value={inputs.username}
+              onChange={(e) =>
+                setInputs({ ...inputs, username: e.target.value })
+              }
             />
           </label>
 
@@ -63,6 +90,10 @@ const SignupForm = () => {
                   id="password"
                   type={passwordVisible ? "text" : "password"}
                   className="outline-none rounded-md h-12 w-full p-3 text-md border border-teal-900 focus:border-teal-400 transition-colors duration-200"
+                  value={inputs.password}
+                  onChange={(e) =>
+                    setInputs({ ...inputs, password: e.target.value })
+                  }
                 />
                 <button
                   type="button"
@@ -73,6 +104,7 @@ const SignupForm = () => {
                 </button>
               </div>
             </label>
+
             {/* Confirm Password Field */}
             <label
               className="label inline-flex flex-col items-start gap-2 w-full mb-5"
@@ -84,6 +116,10 @@ const SignupForm = () => {
                   id="confirmPassword"
                   type={confirmPasswordVisible ? "text" : "password"}
                   className="outline-none rounded-md h-12 w-full p-3 text-md border border-teal-900 focus:border-teal-400 transition-colors duration-200"
+                  value={inputs.confirmPassword}
+                  onChange={(e) =>
+                    setInputs({ ...inputs, confirmPassword: e.target.value })
+                  }
                 />
                 <button
                   type="button"
@@ -106,6 +142,10 @@ const SignupForm = () => {
                   name="gender"
                   value="male"
                   className="h-4 w-4 accent-teal-600 border border-teal-900 focus:border-teal-400"
+                  checked={inputs.gender === "male"}
+                  onChange={(e) =>
+                    setInputs({ ...inputs, gender: e.target.value })
+                  }
                 />
                 <span className="text-gray-300">Male</span>
               </label>
@@ -115,6 +155,10 @@ const SignupForm = () => {
                   name="gender"
                   value="female"
                   className="h-4 w-4 accent-teal-600 border border-teal-900 focus:border-teal-400"
+                  checked={inputs.gender === "female"}
+                  onChange={(e) =>
+                    setInputs({ ...inputs, gender: e.target.value })
+                  }
                 />
                 <span className="text-gray-300">Female</span>
               </label>
@@ -128,6 +172,7 @@ const SignupForm = () => {
               height: "40px",
               marginBottom: "16px",
               fontSize: "1.2rem",
+              cursor: "pointer"
             }}
             type="submit"
           >
@@ -136,7 +181,9 @@ const SignupForm = () => {
         </form>
         <p>
           Already have an account?{" "}
-          <span className="pl-1 link link-info">Login here</span>
+          <Link to="/login">
+            <span className="pl-1 link link-info">Login here</span>
+          </Link>
         </p>
       </Flex>
     </Card>

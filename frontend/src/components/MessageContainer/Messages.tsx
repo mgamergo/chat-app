@@ -1,6 +1,4 @@
-import React from "react";
 import wp14199750bw from "../../assets/wp14199750bw.webp";
-import { TiMessages } from "react-icons/ti";
 import Message from "./Message";
 
 const Messages = () => {

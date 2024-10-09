@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import { Button, Card, Flex } from "@radix-ui/themes";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const SignupForm = () => {
+const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+  });
 
+  // Toggle password visibility
   const togglePasswordVisibility = () => {
     setPasswordVisible((prevState) => !prevState);
+  };
+
+  // Handle form submission
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    console.log("Form Data:", inputs);
   };
 
   return (
@@ -22,7 +34,8 @@ const SignupForm = () => {
         className="w-full mt-10"
       >
         {/* Form element wrapping input fields and button */}
-        <form className="w-full">
+        <form className="w-full" onSubmit={handleSubmit}>
+          {/* Username Field */}
           <label
             className="label inline-flex flex-col items-start gap-2 w-full mb-5"
             htmlFor="username"
@@ -31,9 +44,14 @@ const SignupForm = () => {
             <input
               id="username"
               className="outline-none rounded-md h-12 w-full p-3 text-md border border-teal-900 focus:border-teal-400 transition-colors duration-200"
+              value={inputs.username}
+              onChange={(e) =>
+                setInputs({ ...inputs, username: e.target.value })
+              }
             />
           </label>
 
+          {/* Password Field */}
           <label
             className="label inline-flex flex-col items-start gap-2 w-full mb-5"
             htmlFor="password"
@@ -44,6 +62,10 @@ const SignupForm = () => {
                 id="password"
                 type={passwordVisible ? "text" : "password"}
                 className="outline-none rounded-md h-12 w-full p-3 text-md border border-teal-900 focus:border-teal-400 transition-colors duration-200"
+                value={inputs.password}
+                onChange={(e) =>
+                  setInputs({ ...inputs, password: e.target.value })
+                }
               />
               <button
                 type="button"
@@ -55,7 +77,7 @@ const SignupForm = () => {
             </div>
           </label>
 
-          {/* Button with full width */}
+          {/* Submit Button */}
           <Button
             style={{
               width: "100%",
@@ -70,11 +92,13 @@ const SignupForm = () => {
         </form>
         <p>
           Don't have an account?{" "}
-          <span className="pl-1 link link-info">Create One</span>
+          <Link to="/signup">
+            <span className="pl-1 link link-info">Create One</span>
+          </Link>
         </p>
       </Flex>
     </Card>
   );
 };
 
-export default SignupForm;
+export default LoginForm;
