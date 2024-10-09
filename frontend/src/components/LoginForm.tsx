@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Card, Flex } from "@radix-ui/themes";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useLogin from "../hooks/useLogin";
 
 const LoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -9,6 +10,7 @@ const LoginForm = () => {
     username: "",
     password: "",
   });
+  const {loading, login} = useLogin()
 
   // Toggle password visibility
   const togglePasswordVisibility = () => {
@@ -16,9 +18,9 @@ const LoginForm = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    console.log("Form Data:", inputs);
+    await login(inputs)
   };
 
   return (
@@ -79,11 +81,14 @@ const LoginForm = () => {
 
           {/* Submit Button */}
           <Button
+          disabled={loading}
+          loading={loading}
             style={{
               width: "100%",
               height: "40px",
               marginBottom: "16px",
               fontSize: "1.2rem",
+              cursor: 'pointer'
             }}
             type="submit"
           >

@@ -30,7 +30,6 @@ const SignupForm = () => {
     e.preventDefault();
     // console.log(inputs);
     const res = await signup(inputs)
-    console.log(res)
   };
 
   return (
@@ -167,6 +166,8 @@ const SignupForm = () => {
 
           {/* Signup Button */}
           <Button
+          disabled={loading}
+          loading={loading}
             style={{
               width: "100%",
               height: "40px",

@@ -63,12 +63,12 @@ export const login = async (req, res) => {
     );
 
     if (!user || !isPasswordCorrect) {
-      res.status(400).json({ error: "Incorrect username or password" });
+      return res.status(400).json({ error: "Incorrect username or password" });
     }
 
     generateTokenAndSetCookie(user._id, res);
 
-    res.status(200).json({
+    return res.status(200).json({
       _id: user._id,
       fullName: user.fullName,
       username: user.username,
@@ -76,9 +76,10 @@ export const login = async (req, res) => {
     });
   } catch (error) {
     console.log("Error in signin Controller:", error.message);
-    res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 
 export const logout = (req, res) => {
   try {

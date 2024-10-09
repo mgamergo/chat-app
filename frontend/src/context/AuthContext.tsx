@@ -1,13 +1,22 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 type AuthContextType = {
-  authUser: {};
-  setAuthUser: (user: any) => void;
+  authUser: {
+    _id: 'string',
+    fullName: string,
+    username: string,
+    profilePic: string
+  } | null;
+  setAuthUser: (user: {
+    _id?: 'string',
+    fullName?: string,
+    username?: string,
+    profilePic?: string
+  } | null) => void;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useAuthContext = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -23,4 +32,4 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 };
 
 
-//TODO: You stopped here. Set the localstorage item and complete the type definitions in this file
+//FIXME: You stopped here. Set the localstorage item and complete the type definitions in this file

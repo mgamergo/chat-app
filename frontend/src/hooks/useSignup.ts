@@ -1,13 +1,14 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useAuthContext } from "../context/AuthContext";
 
 type SignupProps = {
   fullName: string;
   username: string;
   password: string;
   confirmPassword: string;
-  gender: string
+  gender: string;
 };
 
 type UseSignupReturn = {
@@ -18,6 +19,7 @@ type UseSignupReturn = {
 // Custom hook signature
 const useSignup = (): UseSignupReturn => {
   const [loading, setLoading] = useState(false);
+  const { setAuthUser } = useAuthContext();
 
   const signup = async ({
     fullName,
@@ -51,7 +53,8 @@ const useSignup = (): UseSignupReturn => {
       if (data.error) {
         throw new Error(data.error);
       }
-      return data
+      localStorage.setItem("chat-user", JSON.stringify(data));
+      setAuthUser(data);
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error(error.message);
@@ -66,8 +69,7 @@ const useSignup = (): UseSignupReturn => {
   return { loading, signup };
 };
 
-
-export default useSignup
+export default useSignup;
 
 function validateInputs({
   fullName,
@@ -76,7 +78,6 @@ function validateInputs({
   confirmPassword,
   gender,
 }: SignupProps): boolean {
-  console.log(fullName, username, password, confirmPassword, gender);
   if (!fullName || !username || !password || !confirmPassword || !gender) {
     toast.error("Please fill all the inputs!!");
     return false;
