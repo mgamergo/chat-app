@@ -1,23 +1,14 @@
+import useGetConversations from '../../hooks/useGetConversations'
 import Conversation from './Conversation'
 
 const Conversations = () => {
+  const {loading, conversations} = useGetConversations()
+  console.log(conversations);
+  
+  
   return (
     <div className='flex-grow overflow-x-hidden overflow-y-auto'>
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
+      {conversations.map(item => <Conversation item={item} />)}
     </div>
   )
 }

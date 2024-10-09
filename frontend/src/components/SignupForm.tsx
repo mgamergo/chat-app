@@ -29,7 +29,7 @@ const SignupForm = () => {
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     // console.log(inputs);
-    const res = await signup(inputs)
+    await signup(inputs)
   };
 
   return (

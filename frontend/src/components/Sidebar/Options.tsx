@@ -1,4 +1,4 @@
-import { DropdownMenu, Button, IconButton } from "@radix-ui/themes";
+import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { CgProfile } from "react-icons/cg";
 import useLogout from "../../hooks/useLogout";
 
