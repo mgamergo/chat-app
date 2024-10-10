@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import useConversation from '../../zustand/useConversations';
 import Header from './Header';
 import Messages from './Messages';
 import SendMessages from './SendMessages';
@@ -16,11 +18,17 @@ const NoChatSelected = () => {
 };
 
 const MessageContainer = () => {
-  const selected = true; 
+  const {selectedConversation, setSelectedConversation} = useConversation()
+
+  useEffect(() => {
+
+    // Cleanup function to reset state on unmounting
+    return () => setSelectedConversation(null)
+  }, [setSelectedConversation])
 
   return (
     <div className='w-full h-full flex flex-col'>
-      {selected ? (
+      {selectedConversation ? (
         <>
           <Header />
           <Messages />
