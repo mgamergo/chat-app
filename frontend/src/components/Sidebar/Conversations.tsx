@@ -2,10 +2,23 @@ import { Skeleton } from "@radix-ui/themes";
 import useGetConversations from "../../hooks/useGetConversations";
 import Conversation from "./Conversation";
 
+type Props = {
+  createdAt: string;
+  updatedAt: string;
+  fullName: string;
+  gender: string;
+  profilePic: string;
+  username: string;
+  _id: string;
+  lastMsg: {
+    message: string;
+    createdAt: string;
+    _id: string;
+  };
+};
+
 const Conversations = () => {
   const { loading, conversations } = useGetConversations();
-  console.log(conversations);
-
   return (
     <>
       {loading && (
@@ -21,8 +34,8 @@ const Conversations = () => {
       )}
       {!loading && (
         <div className="flex-grow overflow-x-hidden overflow-y-auto">
-          {conversations.map((item) => (
-            <Conversation item={item} />
+          {conversations.map((item: Props) => (
+            <Conversation item={item} key={item._id} />
           ))}
         </div>
       )}

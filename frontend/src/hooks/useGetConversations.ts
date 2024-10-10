@@ -26,10 +26,9 @@ const useGetConversations = () => {
                 if (data.error) throw new Error(data.error)
 
                 // GET LATEST MESSAGE
-                const conversationsWithLastMsg = await Promise.all(
+                const conversationsWithLastMsg: any = await Promise.all(
                   data.map(async (item: Props) => {
                     const lastMsgResponse = await axios.get(`/api/messages/latest/${item._id}`);
-                    console.log(lastMsgResponse);
                     
                     const lastMsg = lastMsgResponse.data || {message: '', createdAt: ''};
         

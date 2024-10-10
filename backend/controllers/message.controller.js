@@ -5,7 +5,6 @@ export const sendMessage = async (req, res) => {
   try {
     const { message } = req.body;
     const { id: receiverId } = req.params;
-    console.log(receiverId);
     
     const senderId = req.user._id;
 
