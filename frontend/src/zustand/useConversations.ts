@@ -22,6 +22,10 @@ type ConversationState = {
   setSelectedConversation: (conversation: Conversation | null) => void;
   messages: string[];
   setMessages: (messages: string[]) => void;
+  conversationsList: Conversation[];
+  setConversationsList: (conversationsList: Conversation[]) => void;
+  displayConversations: Conversation[];
+  setDisplayConversations: (displayConversations: Conversation[]) => void;
 };
 
 // Create the Zustand store with types
@@ -31,6 +35,10 @@ const useConversation = create<ConversationState>((set) => ({
     set({ selectedConversation }),
   messages: [],
   setMessages: (messages: string[]) => set({ messages }),
+  conversationsList: [], // Initialize conversations
+  setConversationsList: (conversationsList: Conversation[]) => set({ conversationsList }),
+  displayConversations: [],
+  setDisplayConversations: (displayConversations: Conversation[]) => set({ displayConversations }),
 }));
 
 export default useConversation;

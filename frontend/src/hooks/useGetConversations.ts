@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
+import useConversation from "../zustand/useConversations"
 
 type Props = {
   createdAt: string,
@@ -14,7 +15,7 @@ type Props = {
 
 const useGetConversations = () => {
     const [loading, setLoading] = useState(false)
-    const [conversations, setConversations] = useState([])
+    const {setConversationsList, setDisplayConversations} = useConversation()
 
     useEffect(() => {
         const getConversations = async () => {
@@ -36,7 +37,8 @@ const useGetConversations = () => {
                   })
                 );
         
-                setConversations(conversationsWithLastMsg);
+                setDisplayConversations(conversationsWithLastMsg)
+                setConversationsList(conversationsWithLastMsg)
 
             } catch (error: unknown) {
                 if (error instanceof Error) {
@@ -52,7 +54,7 @@ const useGetConversations = () => {
         getConversations()
     }, [])
 
-    return {loading, conversations}
+    return {loading}
 }
 
 export default useGetConversations
