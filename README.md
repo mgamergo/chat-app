@@ -40,18 +40,6 @@ You can access the live version of the app here:
 [![Chat Open State](https://i.postimg.cc/FKSLgfpN/Screenshot-from-2024-10-11-15-33-32.png)](https://postimg.cc/xk0891B4)
 
 
-### Chat (Open State)
-[![Chat Open State](https://i.postimg.cc/FKSLgfpN/Screenshot-from-2024-10-11-15-33-32.png)](https://postimg.cc/xk0891B4)
-
-### Chat (Closed State)
-[![Chat Closed State](https://i.postimg.cc/5yZkXQNT/Screenshot-from-2024-10-11-15-32-28.png)](https://postimg.cc/p5JB7TjJ)
-
-### Login Page
-[![Login Page](https://i.postimg.cc/tJTzt3g7/Screenshot-from-2024-10-11-15-41-03.png)](https://postimg.cc/ygM97Scz)
-
-### Signup Page
-[![Signup Page](https://i.postimg.cc/Vk63LhP0/Screenshot-from-2024-10-11-15-41-08.png)](https://postimg.cc/SJBZgDsm)
-
 ## Getting Started
 
 ### Prerequisites
