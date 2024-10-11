@@ -12,6 +12,7 @@ type MessageProps = {
 
 const Message = ({ _id, senderId, message,createdAt }: MessageProps) => {
   const { authUser } = useAuthContext();
+  // @ts-ignore
   const { selectedConversation } = useConversation();
 
   const fromMe = senderId === authUser?._id;

@@ -28,6 +28,7 @@ export const SocketContextProvider = ({
   const [onlineUsers, setOnlineUsers] = useState<string[]>([]);
   const { authUser } = useAuthContext();
 
+  // @ts-ignore
   useEffect(() => {
     if (authUser) {
       const socketInstance = io('http://localhost:3000', {

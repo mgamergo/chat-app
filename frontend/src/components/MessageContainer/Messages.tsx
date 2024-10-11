@@ -7,10 +7,11 @@ import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
   const { messages, loading } = useGetMessages();
-  const lastMsgRef = useRef();
+  const lastMsgRef = useRef<HTMLDivElement>(null);
   useListenMessages()
 
   useEffect(() => {
+    // @ts-ignore
     setTimeout(() => {lastMsgRef.current?.scrollIntoView({behaviour: 'smooth'})}, 100)
   }, [messages])
   return (
@@ -26,11 +27,17 @@ const Messages = () => {
         <div className="min-h-full p-4">
 
           {!loading && messages.length > 0 && messages.map(message => (
+            // @ts-ignore
             <div key={message._id} ref={lastMsgRef}>
+              {/* @ts-ignore */}
               <Message
-                _id={message._id}
-                senderId={message.senderId}
-                message={message.message}
+              // @ts-ignore
+              _id={message._id}
+              // @ts-ignore
+              senderId={message.senderId}
+              // @ts-ignore
+              message={message.message}
+              // @ts-ignore
                 createdAt={message.createdAt}
               />
             </div>

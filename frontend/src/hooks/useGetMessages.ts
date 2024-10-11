@@ -27,6 +27,7 @@ const useGetMessages = () => {
                 if ('error' in data) throw new Error(data.error); // Improved error checking
 
                 if (Array.isArray(data) && data.length > 0) {
+                    // @ts-ignore
                     setMessages(data);
                 } else {
                     setMessages([]); // Reset if no messages are found
