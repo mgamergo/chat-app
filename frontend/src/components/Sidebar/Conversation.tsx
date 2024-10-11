@@ -1,5 +1,6 @@
 import { Avatar, Flex } from "@radix-ui/themes";
 import useConversation from "../../zustand/useConversations";
+import { useSocketContext } from "../../context/SocketContext";
 
 type Props = {
   createdAt: string;
@@ -19,20 +20,35 @@ type Props = {
 const Conversation = ({ item }: { item: Props }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const isSelected = selectedConversation?._id === item._id;
+  const {onlineUsers} = useSocketContext()
+  const isOnline = onlineUsers.includes(item._id);
+  
   return (
     <Flex
       align="center"
-      className={`m-3 mb-0 w-full h-16 rounded ml-0 px-3 cursor-pointer border-b border-b-gray-800 ${!isSelected ? "hover:bg-teal-950" : ""} ${
-        isSelected ? "bg-teal-800" : ""
-      }`}
+      className={`m-3 mb-0 w-full h-16 rounded ml-0 px-3 cursor-pointer border-b border-b-gray-800 ${
+        !isSelected ? "hover:bg-teal-950" : ""
+      } ${isSelected ? "bg-teal-800" : ""}`}
       onClick={() => setSelectedConversation(item)}
     >
-      <Avatar fallback="A" radius="full" size="4" src={item.profilePic} />
+      <div className="relative">
+        {/* Avatar with online status dot */}
+        <Avatar fallback="A" radius="full" size="4" src={item.profilePic} />
+        
+        {/* Green dot for online status */}
+        {isOnline && (
+          <span
+            className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-green-500 border-2 border-gray-900"
+            style={{ transform: "translate(50%, 50%)" }} // Position the dot
+          ></span>
+        )}
+      </div>
 
       <Flex direction="column" className="ml-3 flex-grow">
         <h3 className="font-bold">{item.fullName}</h3>
         <p className="text-sm text-gray-200">{item.lastMsg.message}</p>
       </Flex>
+      
       <Flex direction="column" justify="end" className="h-full pb-3">
         <p className="text-xs text-gray-300">
           {item.lastMsg.createdAt ? formatTime(item.lastMsg.createdAt) : ""}

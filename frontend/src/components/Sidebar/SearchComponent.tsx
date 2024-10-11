@@ -1,7 +1,7 @@
 import { Flex, TextField } from "@radix-ui/themes";
 import { CiSearch } from "react-icons/ci";
 import useConversation from "../../zustand/useConversations";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const SearchComponent = () => {
   const [searchValue, setSearchValue] = useState("");
