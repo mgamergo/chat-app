@@ -3,10 +3,12 @@ import wp14199750bw from "../../assets/wp14199750bw.webp";
 import useGetMessages from "../../hooks/useGetMessages";
 import Message from "./Message";
 import MessageSkeleton from "./MessageSkelton";
+import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
   const { messages, loading } = useGetMessages();
   const lastMsgRef = useRef();
+  useListenMessages()
 
   useEffect(() => {
     setTimeout(() => {lastMsgRef.current?.scrollIntoView({behaviour: 'smooth'})}, 100)
