@@ -16,7 +16,7 @@ Welcome to the **Real-time Chat App**! This is a full-stack real-time chat appli
 - **User Authentication:** Secure login and signup.
 - **Real-time Messaging:** Instant message updates powered by Socket.IO.
 - **Online User Status:** See which users are online in real-time.
-- **Responsive UI:** Adaptable interface for different screen sizes.
+- **Incoming Message Notification Sound:** Get an audio alert whenever a new message arrives in an open chat.
 
 ## Screenshots
 
