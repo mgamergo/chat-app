@@ -17,8 +17,28 @@ Welcome to the **Real-time Chat App**! This is a full-stack real-time chat appli
 - **Real-time Messaging:** Instant message updates powered by Socket.IO.
 - **Online User Status:** See which users are online in real-time.
 - **Incoming Message Notification Sound:** Get an audio alert whenever a new message arrives in an open chat.
+- **Random Profile Picture Generation:** A random profile picture is automatically assigned relevant to your selected gender while signing based on a public api.
+
+## Live Demo
+
+You can access the live version of the app here:  
+[Real-time Chat App on Render](https://chat-app-q94o.onrender.com/)  
+**Note:** This app is deployed on a free instance on Render.com and may take a little time to load initially.
+
 
 ## Screenshots
+### Signup Page
+[![Signup Page](https://i.postimg.cc/Vk63LhP0/Screenshot-from-2024-10-11-15-41-08.png)](https://postimg.cc/SJBZgDsm)
+
+### Login Page
+[![Login Page](https://i.postimg.cc/tJTzt3g7/Screenshot-from-2024-10-11-15-41-03.png)](https://postimg.cc/ygM97Scz)
+
+### Chat (Closed State)
+[![Chat Closed State](https://i.postimg.cc/5yZkXQNT/Screenshot-from-2024-10-11-15-32-28.png)](https://postimg.cc/p5JB7TjJ)
+
+### Chat (Open State)
+[![Chat Open State](https://i.postimg.cc/FKSLgfpN/Screenshot-from-2024-10-11-15-33-32.png)](https://postimg.cc/xk0891B4)
+
 
 ### Chat (Open State)
 [![Chat Open State](https://i.postimg.cc/FKSLgfpN/Screenshot-from-2024-10-11-15-33-32.png)](https://postimg.cc/xk0891B4)
