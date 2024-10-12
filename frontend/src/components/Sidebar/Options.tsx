@@ -1,7 +1,6 @@
-import { DropdownMenu, IconButton, Tooltip } from "@radix-ui/themes";
+import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { CgProfile } from "react-icons/cg";
 import useLogout from "../../hooks/useLogout";
-import { FaGithub } from "react-icons/fa";
 
 const Options = () => {
   const { logout } = useLogout();
