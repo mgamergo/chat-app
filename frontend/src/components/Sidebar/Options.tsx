@@ -32,12 +32,6 @@ const Options = () => {
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
-
-      <Tooltip content="Add to library">
-        <IconButton radius="full">
-          <FaGithub />
-        </IconButton>
-      </Tooltip>
     </div>
   );
 };
