@@ -32,6 +32,7 @@ export const SocketContextProvider = ({
   useEffect(() => {
     if (authUser) {
       const socketInstance = io('https://chat-app-q94o.onrender.com', {
+      // const socketInstance = io('http://localhost:3000', {
         query: {
           userId: authUser._id,
         },
